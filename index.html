@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Telos</title>
+  <style>
+    :root{
+      --bg:#111d13;--layer:#1e2d21;--accent:#2a9134;--hl:#80b918;--pulse:#c2f970;
+      --text:#d8f3dc;--r:16px;--gap:8px;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.4 Inter,system-ui,-apple-system,sans-serif}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px;display:grid;gap:16px}
+    .glass{background:color-mix(in oklab, var(--layer) 60%, transparent);backdrop-filter:blur(20px);
+      border-radius:var(--r);box-shadow:0 8px 28px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.04)}
+    .row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:16px}
+    .quote{font-weight:700;letter-spacing:.5px;color:var(--hl)}
+    .date{display:flex;gap:12px;align-items:baseline}
+    .weekday{font-weight:800;text-transform:uppercase;color:var(--hl)}
+    .day{font-size:44px;font-weight:900}
+    .week{display:grid;grid-auto-flow:column;gap:8px;overflow:auto;padding:12px}
+    .chip{padding:8px 10px;border-radius:12px;background:#223427}
+    .chip.active{outline:2px solid var(--accent)}
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+    .timeline{height:360px;position:relative;padding:12px}
+    .slot{position:absolute;left:12px;right:12px;height:44px;border-radius:12px;background:#243a2c;outline:1px solid rgba(128,185,24,.25)}
+    .slot::after{content:attr(data-time) " • " attr(data-title);position:absolute;inset:8px 12px;color:#cfe9d6;font-weight:600}
+    .top3,.habits{padding:12px}
+    .pill{display:flex;justify-content:space-between;align-items:center;margin:8px 0;padding:10px 12px;border-radius:12px;background:#223427}
+    .ring{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:
+      radial-gradient(closest-side,#0000 74%,#0000 0),
+      conic-gradient(var(--accent) var(--p),#2a2f2c 0);
+      color:#bde2c9;font-weight:700}
+    .statbtn{padding:8px 12px;border-radius:10px;background:#223427;border:1px solid #2d3f33;cursor:pointer}
+    .footer{opacity:.6;padding:10px 16px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="glass row">
+      <div class="quote">“Focus on the vital three.”</div>
+      <button class="statbtn" onclick="alert('Stats overlay mock')">Stats</button>
+    </div>
+
+    <div class="glass row">
+      <div class="date">
+        <div class="weekday">TUE</div>
+        <div class="day">14</div>
+        <div style="opacity:.35">October 2025</div>
+      </div>
+    </div>
+
+    <div class="glass week">
+      <div class="chip">Mon</div><div class="chip active">Tue</div><div class="chip">Wed</div>
+      <div class="chip">Thu</div><div class="chip">Fri</div><div class="chip">Sat</div><div class="chip">Sun</div>
+    </div>
+
+    <div class="grid">
+      <div class="glass timeline" id="tl">
+        <div class="slot" style="top:40px" data-time="09:00" data-title="Deep Work"></div>
+        <div class="slot" style="top:120px" data-time="11:00" data-title="Shoot: Listing Video"></div>
+        <div class="slot" style="top:220px" data-time="14:00" data-title="Edit & Upload"></div>
+      </div>
+
+      <div class="glass">
+        <div class="top3">
+          <div class="pill"><span>1) Finish hero section</span><span>⏱ 60m</span></div>
+          <div class="pill"><span>2) Call Haik (KW)</span><span>📞</span></div>
+          <div class="pill"><span>3) Drone B-roll export</span><span>🎬</span></div>
+        </div>
+        <hr style="border:0;height:1px;background:#2a3b31;opacity:.6">
+        <div class="habits" style="display:flex;gap:12px;justify-content:space-around">
+          <div class="ring" style="--p:75%">75%</div>
+          <div class="ring" style="--p:40%">40%</div>
+          <div class="ring" style="--p:20%">20%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass footer">Prototype • Telos UI mock • Colors: #111d13 #1e2d21 #2a9134 #80b918 #c2f970</div>
+  </div>
+</body>
+</html>
